@@ -3,6 +3,11 @@ import { notFound } from 'next/navigation'
 import { assets, categoryLabels, getAsset } from '@/lib/assets'
 import PurchasePanel from '@/components/PurchasePanel'
 
+const chainBadges: Record<string, { label: string; symbol: string }> = {
+  ethereum: { label: 'Ethereum', symbol: 'Ξ' },
+  solana: { label: 'Solana', symbol: '◎' },
+}
+
 export function generateStaticParams() {
   return assets.map((a) => ({ slug: a.slug }))
 }
@@ -36,6 +41,17 @@ export default function AssetPage({ params }: { params: { slug: string } }) {
             <h1 className="mt-3 text-3xl font-black">{asset.name}</h1>
           </div>
           <p className="text-slate-300">{asset.description}</p>
+          <div className="flex flex-wrap gap-2">
+            {asset.chains.map((c) => (
+              <span
+                key={c}
+                className="flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs text-slate-300"
+              >
+                <span className="font-mono text-gold">{chainBadges[c].symbol}</span>
+                {chainBadges[c].label}
+              </span>
+            ))}
+          </div>
           <div className="grid grid-cols-2 gap-3 text-sm">
             <Stat label="Valeur totale" value={`${asset.totalValue.toLocaleString('fr-FR')} €`} />
             <Stat label="Prix du token" value={`${asset.tokenPrice} €`} highlight />
@@ -56,7 +72,11 @@ export default function AssetPage({ params }: { params: { slug: string } }) {
               />
             </div>
           </div>
-          <PurchasePanel tokenPrice={asset.tokenPrice} tokensAvailable={asset.tokensAvailable} />
+          <PurchasePanel
+            tokenPrice={asset.tokenPrice}
+            tokensAvailable={asset.tokensAvailable}
+            supportedChains={asset.chains}
+          />
         </div>
       </div>
     </div>
