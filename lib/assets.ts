@@ -25,7 +25,7 @@ export const assets: RwaAsset[] = [
     category: 'voitures',
     description:
       'Flèche d\u2019argent de 2019, 640 ch, 4 200 km. Véhicule de collection conservé en garage climatisé, revenus générés via location événementielle.',
-    imageUrl: '',
+    imageUrl: '/assets/lamborghini-huracan-evo.jpg',
     totalValue: 219000,
     tokenPrice: 50,
     tokensTotal: 4380,
@@ -41,7 +41,7 @@ export const assets: RwaAsset[] = [
     category: 'voitures',
     description:
       'Iconique 911 type 992 de 2020, boîte PDK, couleur GT Silver. Revenus mensuels via plateforme de location premium.',
-    imageUrl: '',
+    imageUrl: '/assets/porsche-911-carrera-s-992.jpg',
     totalValue: 145000,
     tokenPrice: 25,
     tokensTotal: 5800,
@@ -57,7 +57,7 @@ export const assets: RwaAsset[] = [
     category: 'voitures',
     description:
       'Édition Bullitt 2019, moteur 5.0 V8, 460 ch. Séries limitées à forte appréciation historique.',
-    imageUrl: '',
+    imageUrl: '/assets/ford-mustang-bullitt.jpg',
     totalValue: 78000,
     tokenPrice: 20,
     tokensTotal: 3900,
@@ -73,7 +73,7 @@ export const assets: RwaAsset[] = [
     category: 'voitures',
     description:
       'Dernière Ferrari validée par Enzo Ferrari lui-même. 2,9 L biturbo, 478 ch, 4 800 km. La voiture de collection la plus recherchée des décennies 1980-1990.',
-    imageUrl: '',
+    imageUrl: '/assets/ferrari-f40.jpg',
     totalValue: 2450000,
     tokenPrice: 100,
     tokensTotal: 24500,
@@ -89,7 +89,7 @@ export const assets: RwaAsset[] = [
     category: 'voitures',
     description:
       'Hybride hybride V12 de 963 ch, 1 des 210 Aperta produites. Hypercar moderne à appréciation structurelle, exposée lors de concours d’élégance.',
-    imageUrl: '',
+    imageUrl: '/assets/ferrari-laferrari-aperta.jpg',
     totalValue: 5100000,
     tokenPrice: 250,
     tokensTotal: 20400,
@@ -105,7 +105,7 @@ export const assets: RwaAsset[] = [
     category: 'voitures',
     description:
       'Légende des années 50, châssis matching-numbers, historique de course documenté. Les 250 GT s’échangent régulièrement au-delà de 10 M€.',
-    imageUrl: '',
+    imageUrl: '/assets/ferrari-250-gt.jpg',
     totalValue: 12800000,
     tokenPrice: 500,
     tokensTotal: 25600,
@@ -121,7 +121,7 @@ export const assets: RwaAsset[] = [
     category: 'voitures',
     description:
       '1 des 40 Huayra BC. V12 biturbo Mercedes-AMG de 794 ch, carrosserie en carbone titane. Pièce de collection contemporaine extrêmement rare.',
-    imageUrl: '',
+    imageUrl: '/assets/pagani-huayra-bc.jpg',
     totalValue: 3850000,
     tokenPrice: 100,
     tokensTotal: 38500,
@@ -137,7 +137,7 @@ export const assets: RwaAsset[] = [
     category: 'voitures',
     description:
       'Monoplace de piste, 750 ch, 1 070 kg. La Zonda R établit des records sur circuit et figure parmi les Grails des collectionneurs Pagani.',
-    imageUrl: '',
+    imageUrl: '/assets/pagani-zonda-r.jpg',
     totalValue: 3100000,
     tokenPrice: 250,
     tokensTotal: 12400,
@@ -153,7 +153,7 @@ export const assets: RwaAsset[] = [
     category: 'voitures',
     description:
       'Version ultime de la Chiron, 1 600 ch, 440 km/h. Édition extrêmement limitée, pilier des collections de très haute valeur.',
-    imageUrl: '',
+    imageUrl: '/assets/bugatti-chiron-super-sport.jpg',
     totalValue: 5800000,
     tokenPrice: 250,
     tokensTotal: 23200,
@@ -169,7 +169,7 @@ export const assets: RwaAsset[] = [
     category: 'voitures',
     description:
       'La première hypercar de l’ère moderne, 1 001 ch, 407 km/h. Un jalon historique de l’automobile, valeur en constante appréciation.',
-    imageUrl: '',
+    imageUrl: '/assets/bugatti-veyron.jpg',
     totalValue: 1750000,
     tokenPrice: 50,
     tokensTotal: 35000,
@@ -276,6 +276,12 @@ export const assets: RwaAsset[] = [
     chains: ['ethereum', 'solana'],
   },
 ]
+
+export const categoryIcons: Record<Category, string> = {
+  voitures: '🏎️',
+  art: '🎨',
+  cs2: '🗡️',
+}
 
 export const categoryLabels: Record<Category, string> = {
   voitures: 'Voitures de collection',

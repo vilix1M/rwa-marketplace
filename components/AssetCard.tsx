@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import type { RwaAsset } from '@/lib/assets'
-import { categoryLabels } from '@/lib/assets'
+import { categoryLabels, categoryIcons } from '@/lib/assets'
 
 export default function AssetCard({ asset }: { asset: RwaAsset }) {
   const soldShare = Math.round(
@@ -11,13 +11,20 @@ export default function AssetCard({ asset }: { asset: RwaAsset }) {
       href={`/assets/${asset.slug}`}
       className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/5 transition hover:border-gold/50 hover:bg-white/10"
     >
-      <div
-        className={`relative flex h-44 items-center justify-center bg-gradient-to-br ${asset.gradient}`}
-      >
-        <span className="text-5xl opacity-80">
-          {asset.category === 'voitures' ? '🏎️' : asset.category === 'art' ? '🎨' : '🗡️'}
-        </span>
-        <span className="absolute right-3 top-3 rounded-full bg-black/40 px-3 py-1 text-xs font-medium text-slate-200 backdrop-blur">
+      <div className={`relative h-44 overflow-hidden bg-gradient-to-br ${asset.gradient}`}>
+        {asset.imageUrl ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={asset.imageUrl}
+            alt={asset.name}
+            className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+          />
+        ) : (
+          <span className="grid h-full w-full place-items-center text-5xl opacity-80">
+            {categoryIcons[asset.category]}
+          </span>
+        )}
+        <span className="absolute right-3 top-3 rounded-full bg-black/50 px-3 py-1 text-xs font-medium text-slate-200 backdrop-blur">
           {categoryLabels[asset.category]}
         </span>
       </div>

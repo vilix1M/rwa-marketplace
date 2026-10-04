@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { assets, categoryLabels, getAsset } from '@/lib/assets'
+import { assets, categoryLabels, categoryIcons, getAsset } from '@/lib/assets'
 import PurchasePanel from '@/components/PurchasePanel'
 
 const chainBadges: Record<string, { label: string; symbol: string }> = {
@@ -27,11 +27,20 @@ export default function AssetPage({ params }: { params: { slug: string } }) {
       </Link>
       <div className="grid gap-8 lg:grid-cols-2">
         <div
-          className={`flex h-80 items-center justify-center rounded-3xl border border-white/10 bg-gradient-to-br ${asset.gradient}`}
+          className={`relative h-96 overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br ${asset.gradient}`}
         >
-          <span className="text-8xl opacity-80">
-            {asset.category === 'voitures' ? '🏎️' : asset.category === 'art' ? '🎨' : '🗡️'}
-          </span>
+          {asset.imageUrl ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={asset.imageUrl}
+              alt={asset.name}
+              className="h-full w-full object-cover"
+            />
+          ) : (
+            <span className="grid h-full w-full place-items-center text-8xl opacity-80">
+              {categoryIcons[asset.category]}
+            </span>
+          )}
         </div>
         <div className="flex flex-col gap-5">
           <div>
